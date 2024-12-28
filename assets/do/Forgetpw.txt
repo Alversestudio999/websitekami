@@ -1,0 +1,1 @@
+Bagaimana cara mendapatkan password? Masuk Halaman awal, klik Tombol Forget key lalu install text nya, Masuk File pw.txt Dan langkah Terakhir masukan Password yang sudah terdaftar di situ

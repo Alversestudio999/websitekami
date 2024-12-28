@@ -1,0 +1,128 @@
+
+    :root {
+      --primary-color: #2563eb;      /* Soft Blue */
+      --secondary-color: #10b981;    /* Emerald Green */
+      --accent-color: #f97316;       /* Orange */
+      --background-light: #f8fafc;   /* Very Light Blue-Gray */
+      --text-primary: #1f2937;       /* Dark Gray */
+      --text-secondary: #4b5563;     /* Medium Gray */
+      --border-color: #e5e7eb;       /* Light Gray */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      background-color: var(--background-light);
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+    
+    ol li {
+      text-decoration: none;
+      text-decoration-style: none;
+    }
+
+    .section {
+      background-color: white;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-top: 20px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .section:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--accent-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .section p {
+      margin-bottom: 15px;
+      text-align: justify;
+      color: var(--text-secondary);
+    }
+
+    .section ol {
+      padding-left: 30px;
+      margin-bottom: 15px;
+    }
+
+    .section ol li {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .section ol li::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+    }
+    
+    .footer-quote {
+      margin-left:300px;
+      margin-top:50px;
+      font-style: italic; /* Teks miring untuk kutipan */
+   }
+
+    .highlight {
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    .contact-section {
+      background-color: var(--background-light);
+      border: 1px dashed var(--primary-color);
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      .header h1 {
+        font-size: 2em;
+      }
+    }

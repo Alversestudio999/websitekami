@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ContactAdmint</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(49, 49, 49, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-left h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        .hamburger {
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+
+        /* Card Styling */
+        .card {
+            position: relative;
+            width: min(90%, 600px);
+            margin: 200px auto 20px;
+            background: #313131;
+            border-radius: 20px;
+            padding: 5px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                45deg,
+                #12c2e9,
+                #c471ed,
+                #f64f59,
+                #c471ed,
+                #12c2e9
+            );
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradient 3s ease infinite;
+            border-radius: 22px;
+            filter: blur(3px);
+        }
+
+        .card-content {
+            background: #313131;
+            padding: clamp(20px, 5vw, 40px);
+            border-radius: 18px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: clamp(15px, 3vw, 30px);
+            background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .navbar-left h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .card {
+                width: 600px;
+            }
+        }
+        
+  .social-icons {
+    margin-top:20px;
+  }
+  .social-icons a {
+    text-decoration: none;
+    color: #000; /* Warna default */
+    font-size: 24px;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  .social-icons a:hover {
+    color: #007bff; /* Warna saat hover */
+  }
+    </style>
+    <link rel="stylesheet" href="assets/styles/Style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h1>Kelaskami</h1>
+            </div>
+            <div class="navbar-right">
+                <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="article.html">Information</a></li>
+                    <li><a href="Anggota.html">Class Members</a></li>
+                    <li><a href="Privacy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="card">
+            <div class="card-content">
+                <h2>Hubungi Kami</h2>
+<p>Butuh bantuan atau punya saran untuk pengembangan website? Hubungi admin sekarang dan berikan masukan terbaik Anda. Kami siap mendengar dan membantu.</p>
+           <div class="social-icons">
+             <a href="https://www.instagram.com/alstory_999?igsh=YzljYTk1ODg3Zg==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6285137961950" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61566697174209" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

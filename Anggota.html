@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Members Student Cards</title>
+    <link rel="stylesheet" href="assets/styles/Style.css">
+    <link rel="stylesheet" href="assets/styles/Anggota.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1>Kelaskami</h1>
+        </div>
+        <div class="navbar-right">
+            <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="About.html">Dashboard</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Search Container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by name..." />
+        <button id="searchButton">Search</button>
+    </div>
+
+    <!-- Card Container -->
+    <div class="card-container" id="cardContainer"></div>
+
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-credit">
+        <p>© 2024 Kelaskami. All Rights Reserved Powered by Alverse Studio</p>
+      </div>
+      <div class="footer-social">
+        <ul>
+          <li><a href="https://www.instagram.com/alstory_999?igsh=YzljYTk1ODg3Zg==" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://wa.me/6285137961950" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61566697174209" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+    <script>
+        // Toggle Sidebar
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        // Card Generation and Search Functionality
+        document.addEventListener('DOMContentLoaded', async () => {
+            const cardContainer = document.getElementById('cardContainer');
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+
+            try {
+                // Fetch student data
+                const response = await fetch('data/Students.json');
+                if (!response.ok) throw new Error('Failed to fetch data');
+                const students = await response.json();
+
+                // Create and render cards
+                function createCards(data) {
+                    cardContainer.innerHTML = ''; // Clear existing cards
+                    
+                    data.forEach(student => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        
+                        card.innerHTML = `
+                            <div class="image-container">
+                                <img src="${student.image || 'assets/roots/galery/img/robot ai.jpg'}" 
+                                     alt="${student.name}" 
+                                     class="profile-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="name">${student.name}</h3>
+                                <p class="role">Birthdate: ${student.birthdate} || Age: ${student.age}</p>
+                                <a href="#" class="view-more-btn">View More</a>
+                            </div>
+                        `;
+                        
+                        cardContainer.appendChild(card);
+                        
+                        // Add visible class after a small delay for animation
+                        setTimeout(() => card.classList.add('visible'), 100);
+                    });
+                }
+
+                // Initial render
+                createCards(students);
+
+                // Search functionality
+                function performSearch() {
+                    const searchTerm = searchInput.value.toLowerCase().trim();
+                    const filteredStudents = students.filter(student => 
+                        student.name.toLowerCase().includes(searchTerm)
+                    );
+                    createCards(filteredStudents);
+                }
+
+                // Search event listeners
+                searchInput.addEventListener('input', performSearch);
+                searchButton.addEventListener('click', performSearch);
+
+                // Intersection Observer for scroll animations
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    },
+                    { threshold: 0.1 }
+                );
+
+                // Observe all cards
+                document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+            } catch (error) {
+                console.error('Error:', error);
+                cardContainer.innerHTML = '<p>Error loading student data</p>';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Kelaskami</title>
+    <link rel="stylesheet" href="assets/styles/Login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Please login to your account</p>
+        </div>
+        <form onsubmit="event.preventDefault(); login();">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+        <div class="signup-link">
+            <input class="ch" type="checkbox"> Saya telah menyetujui <a href="Privacy.html">Kebijakan Privasi</a>
+        </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <div class="forget">
+          <p><a href="assets/do/Forgetpw.txt" download> Forget Password?</a></p>
+        </div>
+    </div>
+    
+        <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+    <script>
+              // Simulasi data login dari JSON
+        const users = [
+            { username: "MembersKelaskami", password: "Kelaskami0000" },
+            { username: "User", password: "404" }
+        ];
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Cek kecocokan username dan password
+            const user = users.find(
+                (u) => u.username === username && u.password === password
+            );
+
+            if (user) {
+                // Simpan data login ke localStorage
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("username", user.username);
+                // Tampilkan Konfirmasi berhasil
+                window.location.href = "index.html"; // Redirect ke index.html
+            } else {
+                    Swal.fire({
+        title: 'Kesalahan Login!',
+        text: 'Username dan password yang anda masukan tidak valid. Pastikan Anda mengisi dengan data yang ada, Dan silakan ulangi Kembali!',
+        icon: 'error',
+        confirmButtonText: 'Coba Lagi',
+        background: '#f8d7da',
+        customClass: {
+            title: 'custom-title-error',
+            confirmButton: 'custom-confirm-button-error'
+        },
+        showClass: {
+            popup: 'animate__animated animate__shakeX'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOut'
+        }
+    });
+            }
+        }
+        console.log(username, password);
+    </script>
+</body>
+</html>

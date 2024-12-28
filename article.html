@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelaskami - Article List</title>
+    <link rel="stylesheet" href="assets/styles/Style.css">
+    <link rel="stylesheet" href="assets/styles/Article.css">
+</head>
+<body>
+    <div class="progress-bar"></div>
+                <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h1>Kelaskami</h1>
+            </div>
+            <div class="navbar-right">
+                <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <nav>
+                <ul>
+                  <li><a href="Index.html">home</a></li>
+                  <li><a href="About.html">Dashboard</a></li>
+                  <li><a href="Error.html">Class Team</a></li>
+                  <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+    <main>
+        <div class="article-grid">
+            <!-- Articles will be dynamically generated here -->
+        </div>
+    </main>
+
+    <div class="loading-animation"></div>
+
+    <script>
+                      // Toggle Sidebar Function
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+        // Sample article data
+        const articles = [
+            {
+                title: "Kecerdasan Buatan untuk Pertanian Modern",
+                content: "Teknologi AI mulai digunakan untuk memprediksi pola cuaca dan meningkatkan hasil panen di sektor pertanian.",
+                date: "3 Desember 2024"
+            },
+    {
+        title: "Teknologi Terkini di Indonesia",
+        content: "Perkembangan teknologi terbaru yang mengubah landscape digital nasional.",
+        date: "10 Desember 2024"
+    },
+    {
+        title: "Perkembangan AI di Industri Otomotif",
+        content: "Teknologi AI kini digunakan untuk meningkatkan efisiensi dan keselamatan dalam kendaraan otonom.",
+        date: "11 Desember 2024"
+    },
+    {
+        title: "Solusi Keamanan Siber Baru",
+        content: "Sebuah perusahaan teknologi meluncurkan alat keamanan siber terbaru untuk melindungi data pribadi.",
+        date: "12 Desember 2024"
+    },
+    {
+        title: "Pemrograman Python untuk Pemula",
+        content: "Kursus online baru mengajarkan Python dengan pendekatan praktis bagi pemula.",
+        date: "13 Desember 2024"
+    },
+    {
+        title: "Tren Desain Web 2025",
+        content: "Animasi mikro dan desain minimalis menjadi fokus utama dalam desain web terkini.",
+        date: "14 Desember 2024"
+    },
+    {
+        title: "Teknologi Blockchain di Dunia Keuangan",
+        content: "Blockchain digunakan untuk mempercepat transaksi keuangan dan meningkatkan transparansi.",
+        date: "15 Desember 2024"
+    },
+    {
+        title: "Machine Learning untuk Analisis Data",
+        content: "Perusahaan menggunakan machine learning untuk mengolah data besar dan menghasilkan insight berharga.",
+        date: "8 Desember 2024"
+    },
+    {
+        title: "5 Tips Membuat Desain UI yang Menarik",
+        content: "Desain antarmuka yang simpel dan fungsional semakin diminati oleh pengguna aplikasi modern.",
+        date: "5 Desember 2024"
+    },
+    {
+        title: "Startup Teknologi Baru di Indonesia",
+        content: "Startup lokal mulai bersaing di pasar global dengan produk teknologi berbasis AI dan IoT.",
+        date: "2 Januari 2025"
+    },
+    {
+        title: "Tren Cloud Computing di Tahun 2025",
+        content: "Bisnis mulai mengadopsi solusi cloud untuk menyimpan data dan meningkatkan skalabilitas sistem.",
+        date: "15 Desember 2024"
+    },
+    {
+        title: "Penggunaan React untuk Aplikasi Web",
+        content: "React terus menjadi pilihan utama untuk membangun aplikasi web modern yang cepat dan skalabel.",
+        date: "23 Desember 2024"
+    },
+    {
+        title: "Framework Baru untuk Backend Developer",
+        content: "Framework terbaru ini diklaim mampu mempercepat pengembangan aplikasi server-side hingga 50%.",
+        date: "12 Desember 2024"
+    },
+    {
+        title: "Teknologi AR di Dunia Perbelanjaan",
+        content: "Aplikasi augmented reality memberikan pengalaman berbelanja yang lebih menarik dan interaktif.",
+        date: "17 Desember 2024"
+    },
+    {
+        title: "Penerapan Big Data di Industri Retail",
+        content: "Perusahaan retail menggunakan big data untuk memprediksi tren belanja dan meningkatkan layanan pelanggan.",
+        date: "10 Desember 2024"
+    },
+    {
+        title: "Solusi Penyimpanan Data dengan SSD",
+        content: "SSD generasi terbaru menawarkan kecepatan lebih tinggi untuk penyimpanan data skala besar.",
+        date: "20 Desember 2024"
+    },
+    {
+        title: "Chatbot AI untuk Bisnis Kecil",
+        content: "Perkembangan chatbot berbasis AI memberikan solusi layanan pelanggan yang lebih efisien untuk bisnis kecil.",
+        date: "3 Desember 2024"
+    },
+    {
+        title: "Kursus Online untuk Data Science",
+        content: "Peminat data science meningkat dengan hadirnya kursus online yang lebih terjangkau dan praktis.",
+        date: "4 Desember 2024"
+    },
+    {
+        title: "Pengembangan Aplikasi Mobile Hybrid",
+        content: "Hybrid apps kini menjadi pilihan utama karena biaya pengembangan yang lebih rendah dan kompatibilitas tinggi.",
+        date: "5 Januari 2025"
+    },
+    {
+        title: "Penggunaan Docker dalam Pengembangan",
+        content: "Docker menjadi solusi populer bagi pengembang untuk menciptakan lingkungan aplikasi yang konsisten.",
+        date: "31 Desember 2024"
+    },
+    {
+        title: "Tren E-commerce Tahun Depan",
+        content: "Platform e-commerce fokus pada pengalaman pengguna dengan fitur yang lebih personal.",
+        date: "7 Januari 2025"
+    },
+    {
+        title: "Pengembangan Alverse Studio",
+        content: "Alverse Studio mengumumkan pengembangan alat kolaborasi baru untuk para pelajar.",
+        date: "4 Desember 2024"
+    },
+    {
+        title: "Rencana Proyek Baru Alverse",
+        content: "Alverse akan meluncurkan aplikasi produktivitas untuk membantu manajemen tugas di sekolah.",
+        date: "8 Desember 2024"
+    },
+    {
+        title: "Alverse Mendukung Komunitas Pelajar",
+        content: "Komunitas pelajar kini menggunakan platform Alverse untuk berbagi pengetahuan dan proyek.",
+        date: "10 Desember 2024"
+    },
+    {
+        title: "Pembaruan Website Alverse",
+        content: "Alverse Studio meluncurkan desain baru pada website mereka dengan fitur multibahasa.",
+        date: "15 Desember 2024"
+    },
+    {
+        title: "Kolaborasi Alverse dengan Pengembang Lokal",
+        content: "Alverse Studio menggandeng pengembang lokal untuk menciptakan solusi digital yang lebih inovatif.",
+        date: "18 Desember 2024"
+    },
+    {
+        title: "Teknologi 5G Mempercepat Internet",
+        content: "Penerapan jaringan 5G di berbagai wilayah meningkatkan kecepatan internet secara signifikan.",
+        date: "3 Desember 2024"
+    },
+    {
+        title: "Chatbot AI di Industri Kesehatan",
+        content: "Chatbot berbasis AI digunakan untuk membantu pasien dalam diagnosis awal.",
+        date: "6 Desember 2024"
+    },
+    {
+        title: "Framework Frontend Baru Diluncurkan",
+        content: "Framework frontend terbaru menawarkan kecepatan render yang lebih baik untuk aplikasi web.",
+        date: "7 Desember 2024"
+    },
+    {
+        title: "Pengembangan Game dengan Unreal Engine 5",
+        content: "Unreal Engine 5 kini menjadi pilihan utama untuk pengembangan game dengan grafis realistis.",
+        date: "9 Desember 2024"
+    },
+    {
+        title: "Penerapan IoT di Rumah Pintar",
+        content: "IoT semakin mempermudah pengelolaan perangkat rumah pintar melalui satu aplikasi.",
+        date: "11 Desember 2024"
+    },
+    {
+        title: "Peningkatan Kemampuan Deep Learning",
+        content: "Deep learning kini mampu memproses data lebih cepat berkat algoritma terbaru.",
+        date: "14 Desember 2024"
+    },
+    {
+        title: "Tips Optimalisasi SEO untuk Website",
+        content: "Strategi terbaru untuk meningkatkan peringkat website di mesin pencari.",
+        date: "16 Desember 2024"
+    },
+    {
+        title: "E-commerce Lokal Mendunia",
+        content: "Platform e-commerce lokal berhasil menarik perhatian konsumen global dengan produknya.",
+        date: "19 Desember 2024"
+    },
+    {
+        title: "Perkembangan Teknologi VR",
+        content: "Virtual reality semakin populer untuk pelatihan profesional dan hiburan.",
+        date: "21 Desember 2024"
+    },
+    {
+        title: "Tren Desain UI/UX 2025",
+        content: "Desain yang fokus pada pengalaman pengguna menjadi tren utama di tahun 2025.",
+        date: "22 Desember 2024"
+    },
+    {
+        title: "Kursus Pemrograman Online Gratis",
+        content: "Platform edukasi mulai menyediakan kursus pemrograman tanpa biaya untuk pelajar.",
+        date: "24 Desember 2024"
+    },
+    {
+        title: "Solusi Penyimpanan Cloud Baru",
+        content: "Penyimpanan cloud generasi terbaru hadir dengan fitur keamanan lebih tinggi.",
+        date: "26 Desember 2024"
+    },
+    {
+        title: "Aplikasi Keuangan Digital",
+        content: "Aplikasi baru membantu pengguna mengelola keuangan pribadi dengan lebih efisien.",
+        date: "28 Desember 2024"
+    },
+    {
+        title: "Pemanfaatan AI di Dunia Pendidikan",
+        content: "AI digunakan untuk membuat kurikulum yang lebih adaptif dan personal.",
+        date: "30 Desember 2024"
+    },
+    {
+        title: "Tips Pemrograman JavaScript Modern",
+        content: "Pelajari teknik terbaru untuk meningkatkan performa kode JavaScript.",
+        date: "1 Januari 2025"
+    },
+    {
+        title: "Proyek Open Source Terbaru",
+        content: "Proyek open source baru menawarkan solusi inovatif untuk pengembangan aplikasi.",
+        date: "3 Januari 2025"
+    },
+    {
+        title: "Keamanan Data di Era Digital",
+        content: "Strategi baru diterapkan untuk melindungi data pribadi di dunia maya.",
+        date: "5 Januari 2025"
+    },
+    {
+        title: "Pelatihan Pemrograman untuk Anak-anak",
+        content: "Kursus coding untuk anak-anak menjadi populer untuk memperkenalkan dunia teknologi.",
+        date: "7 Januari 2025"
+    },
+    {
+        title: "Robotika di Industri Manufaktur",
+        content: "Robotika kini digunakan untuk meningkatkan efisiensi di lini produksi.",
+        date: "9 Januari 2025"
+    },
+    {
+        title: "Startup AI di Asia Tenggara",
+        content: "Startup berbasis AI di Asia Tenggara mulai menarik perhatian investor global.",
+        date: "11 Januari 2025"
+    }
+            // Add more articles as needed
+        ];
+
+        // Function to create article elements
+        function createArticles() {
+            const grid = document.querySelector('.article-grid');
+            
+            articles.forEach((article, index) => {
+                const articleElement = document.createElement('div');
+                articleElement.className = 'article';
+                articleElement.style.animationDelay = `${index * 0.1}s`;
+                
+                articleElement.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <p>${article.content}</p>
+                    <div class="article-meta">
+                        <span class="date">${article.date}</span>
+                        <a href="Error.html" class="read-more">Baca Selengkapnya</a>
+                    </div>
+                `;
+                
+                grid.appendChild(articleElement);
+            });
+        }
+
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createArticles();
+        });
+
+        // Intersection Observer for smooth animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.article').forEach(article => {
+                observer.observe(article);
+            });
+        };
+
+        // Call observer after articles are created
+        setTimeout(observeElements, 100);
+    </script>
+</body>
+</html>

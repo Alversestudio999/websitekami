@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <style>
+    :root {
+      --primary-color: #353A40;
+      --secondary-color: #91A5A7;
+      --accent-color: #5E68E6;
+      --highlight-color: #CD873C;
+      --text-light: #f4f4f4;
+      --text-dark: #333;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 6rem;
+      color: var(--highlight-color);
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin: 10px 0 20px;
+    }
+
+    .icon {
+      max-width: 150px;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: var(--accent-color);
+      color: var(--text-light);
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    a:hover {
+      background-color: var(--highlight-color);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 4rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      a {
+        font-size: 0.9rem;
+      }
+    }
+  .icon {
+    max-width: 100%; /* Agar responsif */
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px; /* Memberikan sudut membulat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan */
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/roots/galery/img/pemikiran platform.jpg" alt="Not Found Icon" class="icon">
+    <h1>404</h1>
+    <p>Oops! I haven't finished this page yet. Stay tuned, it's coming soon!</p>
+    <a href="/">Go Back to Home</a>
+  </div>
+</body>
+</html>

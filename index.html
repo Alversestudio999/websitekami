@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelaskami Premmier</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="assets/styles/Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h1>Kelaskami</h1>
+            </div>
+            <div class="navbar-right">
+                <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="handleHomeNavigation()">Dashboard</a></li>
+                    <li><a href="#" id="login-button" onclick="redirectToLogin()">Login</a>
+                    <a href="#" id="logout-button" onclick="logout()">Log out</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="hero">
+            <div class="hero-content">
+                <h2>Selamat datang di Kelaskami</h2>
+                <h3>Platform Pembelajaran Kolaboratif serta Modern</h3>
+                <p>
+                    <strong>Kelaskami adalah ruang belajar yang menekankan pada kolaborasi dan pengembangan diri untuk mengasah keterampilan dalam pengembangan perangkat lunak.</strong> 
+                    Kami berfokus pada peningkatan keterampilan dan pengetahuan melalui pendekatan yang menyenangkan, interaktif, dan berbasis teknologi terkini.
+                </p>
+                <a href="assets/do/pw.txt" class="cta-button" download>Forget Key</a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-credit">
+                    <p>© 2024 Kelaskami. All Rights Reserved</p>
+                    <p>Powered by Alverse Studio</p>
+                </div>
+                <div class="footer-social">
+                    <ul>
+                        <li><a href="https://www.instagram.com/alstory_999?igsh=YzljYTk1ODg3Zg==" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://wa.me/6285137961950" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61566697174209" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        // Utility Function for Showing Alerts
+        function showCustomAlert(title, text, icon, background) {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                confirmButtonText: 'Oke, Mengerti',
+                background: background,
+                customClass: {
+                    title: `custom-title-${icon}`,
+                    confirmButton: `custom-confirm-button-${icon}`
+                },
+                showClass: {
+                    popup: 'animate__animated animate__zoomIn'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__zoomOut'
+                }
+            });
+        }
+
+        // Toggle Sidebar Function
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Navigation and Authentication Functions
+        function handleHomeNavigation() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (isLoggedIn === "true") {
+                window.location.href = "About.html";
+            } else {
+                showCustomAlert(
+                    'Eh, Ada yang lupa!', 
+                    'Anda Belum Login nih. Login dulu, Baru deh kita kasih Akses Ke Halaman ini', 
+                    'warning', 
+                    'white'
+                );
+            }
+        }
+
+        function handleJoinNow() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (isLoggedIn === "true") {
+                // Redirect to registration or course selection page
+                window.location.href = "courses.html";
+            } else {
+                showCustomAlert(
+                    'Gabung Sekarang', 
+                    'Silakan login terlebih dahulu untuk bergabung', 
+                    'info', 
+                    '#d1ecf1'
+                );
+                setTimeout(() => {
+                    window.location.href = "Login.html";
+                }, 2000);
+            }
+        }
+
+        function redirectToLogin() {
+            window.location.href = "Login.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("username");
+            
+            showCustomAlert(
+                'Informasi', 
+                'Anda telah keluar dari akun anda, Silakan Login kembali jika ingin dilanjutkan', 
+                'info', 
+                '#d1ecf1'
+            );
+            
+            window.location.reload();
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            navbar.style.backgroundColor = window.scrollY > 50 
+                ? 'rgba(53, 58, 64, 0.9)' 
+                : 'var(--primary-color)';
+        });
+
+        // Login State Management
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const loginButton = document.getElementById("login-button");
+            const logoutButton = document.getElementById("logout-button");
+
+            if (isLoggedIn === "true") {
+                loginButton.style.display = "none";
+                logoutButton.style.display = "inline-block";
+            } else {
+                loginButton.style.display = "inline-block";
+                logoutButton.style.display = "none";
+            }
+        };
+    </script>
+</body>
+</html>

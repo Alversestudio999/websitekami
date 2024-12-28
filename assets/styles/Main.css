@@ -1,0 +1,61 @@
+/* Reset default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body dasar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #353A40; /* Dark Gray */
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Warna utama */
+:root {
+    --primary-color: #353A40; /* Dark Gray */
+    --secondary-color: #91A5A7; /* Light Green */
+    --accent-color: #5E68E6; /* Blue */
+    --highlight-color: #CD873C; /* Orange */
+}
+
+/* Layout dasar */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
+    body {
+        background-color: #91A5A7; /* Light Green for smaller screens */
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        background-color: #353A40; /* Blue for medium screens */
+    }
+}
+
+@media (min-width: 769px) {
+    body {
+        background-color: #353A40; /* Dark Gray for larger screens */
+    }
+
+    .container {
+        padding: 30px;
+    }
+}
